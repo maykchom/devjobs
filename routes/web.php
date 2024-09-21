@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VacanteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,9 +10,14 @@ Route::get('/', function () {
 });
 
 // Para verificar que el usuario tiene cuenta verificada por correo, debemos tener "middleware(['auth', 'verified'])"
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [VacanteController::class, 'index'])->middleware(['auth', 'verified'])->name('vacantes.index');
+
+Route::get('/vacantes/create', [VacanteController::class, 'create'])->middleware(['auth', 'verified'])->name('vacantes.create');
+Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacantes.edit');
+Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
+
+//Notificaciones
+Route::get('/notificaciones',NotificacionController::class)->name('notificaciones');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
