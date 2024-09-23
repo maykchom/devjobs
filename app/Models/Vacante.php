@@ -37,7 +37,7 @@ class Vacante extends Model
     //Creamos la relacion con candidatos
     public function candidatos()
     {
-        return $this->hasMany(Candidato::class);
+        return $this->hasMany(Candidato::class)->orderBy('created_at', 'DESC');
     }
 
     //Relacion 1 a 1, en donde una vacante pertenece a un usuario(reclutador)

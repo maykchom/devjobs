@@ -34,7 +34,8 @@ class NuevoCandidato extends Notification
     {
         // Declaramos que las notificaciones se enviarán por email y en la base de datos
         // El mail se configura en el método "toMail" y el de base de datos en "toDatabase"
-        return ['mail', 'database'];
+        // return ['mail', 'database'];
+        return [ 'database'];
     }
 
     /**

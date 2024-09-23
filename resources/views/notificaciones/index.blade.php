@@ -17,7 +17,7 @@
                                 <p class="text-sm text-gray-400"><span>{{$notificacion->created_at->diffForHumans()}}</span></p>
                             </div>
                             <div class="mt-5 lg:mt-0">
-                                <a href="" class="bg-indigo-500 p-3 text-sm font-bold text-white rounded-lg">ver candidatos</a>
+                                <a href="{{route('candidatos.index', $notificacion->data['id_vacante'])}}" class="bg-indigo-500 p-3 text-sm font-bold text-white rounded-lg">ver candidatos</a>
                             </div>
                         </div>
                     @empty
